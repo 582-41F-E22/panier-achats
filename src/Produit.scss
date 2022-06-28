@@ -1,0 +1,25 @@
+.Produit {
+  width: 250px;
+  height: 480px;
+  margin: 0.75rem;
+  padding: 0.3rem;
+  background-color: #444;
+  color: white;
+  border: 1px solid #555;
+  box-shadow: 1px 1px 0.75rem 2px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+  }
+
+  .info {
+    font-size: 0.8rem;
+    line-height: 1.3rem;
+
+    .prix {
+      // font-weight: 500;
+    }
+  }
+}

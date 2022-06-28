@@ -1,0 +1,15 @@
+.ListeProduits {
+  margin-bottom: 2rem;
+
+  h2 {
+    margin-left: 1.5rem;
+  }
+
+  section {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+  }
+}

@@ -6,9 +6,9 @@ import PiedPage from './PiedPage';
 export default function Appli() {
   return (
     <div className="Appli">
-        <Entete />
-        <ListeProduits />
-        <PiedPage />
+      <Entete />
+      <ListeProduits />
+      <PiedPage />
     </div>
   );
 }
