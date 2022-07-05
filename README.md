@@ -1,3 +1,3 @@
-# Titre du site Web ou application
+# Premier exemple d'une application monopage React
 
-Court texte présentant votre site Web/application.
+Exemple simple vu en classe dans le cours 582-41F à l'été 2022.
