@@ -2,7 +2,7 @@ import './ListeProduits.scss';
 import Produit from './Produit';
 import tabProduits from './data/produits.json';
 
-export default function ListeProduits(props) {
+export default function ListeProduits({panier, setPanier}) {
   // console.log('Tableau des produits : ', tabProduits);
   // let tabJsxProduits = [];
   // for (let i = 0; i < tabProduits.length; i++) {
@@ -14,7 +14,7 @@ export default function ListeProduits(props) {
       <h2>Produits disponibles</h2>
       <section>
         {tabProduits.map(
-          prd => <Produit id={prd.id} nom={prd.nom} prix={prd.prix}/>
+          prd => <Produit panier={panier} setPanier={setPanier} key={prd.id} id={prd.id} nom={prd.nom} prix={prd.prix}/>
         )}
         {/* {tabJsxProduits} */}
       </section>
