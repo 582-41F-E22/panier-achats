@@ -6,4 +6,8 @@
     color: white;
     border: none;
     outline: none;
+
+    &.article-present {
+        background-color: red;
+    }
 }
