@@ -1,6 +1,7 @@
 import './ListeProduits.scss';
 import Produit from './Produit';
 import tabProduits from './data/produits.json';
+import { Link } from "react-router-dom";
 
 export default function ListeProduits({panier, setPanier}) {
   // console.log('Tableau des produits : ', tabProduits);
@@ -14,7 +15,10 @@ export default function ListeProduits({panier, setPanier}) {
       <h2>Produits disponibles</h2>
       <section>
         {tabProduits.map(
-          prd => <Produit panier={panier} setPanier={setPanier} key={prd.id} id={prd.id} nom={prd.nom} prix={prd.prix}/>
+          prd => 
+            <Link key={prd.id} to={`/nos-produits/${prd.id}`}>
+              <Produit panier={panier} setPanier={setPanier} id={prd.id} nom={prd.nom} prix={prd.prix}/>
+            </Link>
         )}
         {/* {tabJsxProduits} */}
       </section>

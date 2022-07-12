@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
+import { Routes, Route } from "react-router-dom";
 import './Appli.scss';
 import Entete from './Entete';
 import ListeProduits from './ListeProduits';
 import PiedPage from './PiedPage';
+import Accueil from './Accueil'
+import APropos from './APropos';
+import UnProduit from "./UnProduit";
 
 export default function Appli() {
   // État du compteur de clic
@@ -26,25 +30,22 @@ export default function Appli() {
     }
   , [panier]); // deps
 
-  
+  const elt = <><div><p>Page non définie</p></div><p>Deuxième ligne</p></>;
 
   return (
     <div className="Appli">
       <Entete panier={panier} />
-      <button onClick={()=>setCompteurClic(compteurClic+1)}>Nombre de clic : {compteurClic}</button>
-      <ListeProduits panier={panier} setPanier={setPanier}/>
+
+      <Routes>
+        <Route path='/' element={<Accueil/>}/>
+        <Route path='nos-produits' element={<ListeProduits panier={panier} setPanier={setPanier}/>}/>
+        <Route path='nos-produits/:prdId' element={<UnProduit/>}/>
+        <Route path='a-propos-de-nous' element={<APropos/>}/>
+
+        <Route path='*' element={elt}/>
+      </Routes>
+
       <PiedPage />
     </div>
   );
 }
-
-
-/*
-let panier =
-{
-  prd001: {
-    prix: 25.99,
-    qte: 1
-  }
-}
-*/

@@ -2,6 +2,7 @@ import './Entete.scss';
 // import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Link, NavLink } from "react-router-dom";
 
 export default function Entete(props) {
   // Code JS du composant
@@ -14,12 +15,18 @@ export default function Entete(props) {
   // Renvoyer le "rendu" visuel du composant
   return (
     <header className='Entete'>
-      <h2>Magasin</h2>
-      <nav>
+      <h2><Link to="/">Magasin</Link></h2>
+
+      <nav className="nav-principale">
+        <span><NavLink to="/nos-produits" className={({isActive})=>(isActive) ? 'nav-active' : ''}>Nos produits</NavLink></span>
+        <span><NavLink to="/a-propos-de-nous" className={({isActive})=>(isActive) ? 'nav-active' : ''}>A propos de nous</NavLink></span>
+      </nav>
+
+      <nav className='nav-secondaire'>
         <ul>
           <li>mon compte</li>
           <li>
-            <Badge badgeContent={Object.values(panier).length} color="primary">
+            <Badge badgeContent={infoPanier.articlesTot} color="primary">
               <label htmlFor="cc-sommaire-panier">
                 <ShoppingCartIcon />
               </label>
@@ -37,15 +44,15 @@ export default function Entete(props) {
               </div>
               <div>
                 <span>Sous-total</span>
-                <span>358.96</span>
+                <span>{infoPanier.sousTotal}</span>
               </div>
               <div>
                 <span>Taxes</span>
-                <span>52.56</span>
+                <span>{infoPanier.taxes}</span>
               </div>
               <div>
                 <span>Total</span>
-                <span>411.62</span>
+                <span>{infoPanier.total}</span>
               </div>
             </div>
           </li>
@@ -56,11 +63,13 @@ export default function Entete(props) {
 }
 
 function calculerSommaire(tabPanier) {
+  let st = tabPanier.reduce((acc, article)=> acc + (article.qte*article.prix), 0);
+  let taxes = 0.14995*st
   return {
     articlesDiff: tabPanier.length,
     articlesTot: tabPanier.reduce((acc, cour)=> acc + cour.qte, 0),
-    sousTotal: 100,
-    taxes: 15,
-    total: 115
+    sousTotal: st.toFixed(2),
+    taxes: taxes.toFixed(2),
+    total: (st+taxes).toFixed(2)
   }
 }
