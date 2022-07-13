@@ -2,6 +2,7 @@ import './ListeProduits.scss';
 import Produit from './Produit';
 import tabProduits from './data/produits.json';
 import { Link } from "react-router-dom";
+import {bdFirestore} from './firebase/init';
 
 export default function ListeProduits({panier, setPanier}) {
   // console.log('Tableau des produits : ', tabProduits);
